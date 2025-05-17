@@ -23,7 +23,7 @@ namespace echogame.Models
 
         private void OnPlayerPositionChanged()
         {
-            Position = playerModel.Center;
+            Position = playerModel.CenterF;
             Console.WriteLine("pos changed");
         }
     }

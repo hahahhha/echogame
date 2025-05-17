@@ -10,6 +10,9 @@ using System.Linq;
 
 public class GameForm : Form
 {
+    private const int WIDTH = 800;
+    private const int HEIGHT = 600;
+
     private BallsManager ballsManager;
     private Timer gameLoopTimer;
     private DateTime lastUpdateTime;
@@ -20,7 +23,11 @@ public class GameForm : Form
     private LevelManager levelManager;
 
     private Player player;
-    private Darkness darkness;
+    private DarknessBM darkness;
+
+    // отключаю временно
+    //private Darkness darkness; 
+
 
     public GameForm()
     {
@@ -28,16 +35,16 @@ public class GameForm : Form
         InitializeSounds();
 
         this.DoubleBuffered = true;
-        this.ClientSize = new Size(800, 600);
+        //this.ClientSize = new Size(WIDTH, HEIGHT);
         this.BackColor = Color.Black;
-        this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        //this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
-        this.ControlBox = true; 
-        this.MaximizeBox = false; 
-        this.MinimizeBox = true; 
+        //this.ControlBox = true; 
+        //this.MaximizeBox = false; 
+        //this.MinimizeBox = true; 
 
 
-        gameLoopTimer = new Timer { Interval = 1 }; // ~60 fps
+        gameLoopTimer = new Timer { Interval = 1 };
         lastUpdateTime = DateTime.Now;
 
         gameLoopTimer.Tick += (s, e) => OnTimerTick(s, e);
@@ -63,11 +70,14 @@ public class GameForm : Form
 
         player = new Player(playerModel, playerView, playerController);
 
-        var darknessModel = new DarknessModel(player.Model);
-        var darknessView = new DarknessView(darknessModel, "../../Textures/darkness_mask.png");
-        darkness = new Darkness(darknessModel, darknessView, new DarknessController());
+        //var darknessModel = new DarknessModel(player.Model);
+        //var darknessView = new DarknessView(darknessModel, "../../Textures/darkness_mask.png");
+        // darkness = new Darkness(darknessModel, darknessView, new DarknessController());
 
         ballsManager = new BallsManager(playerModel, levelManager);
+        var darknessModel = new DarknessBMModel(new Size(WIDTH, HEIGHT), playerModel, ballsManager, 50);
+        var darknessView = new DarknessBMView(playerModel, darknessModel);
+        darkness = new DarknessBM(darknessModel, darknessView, null);
     }
 
     protected void InitializeSounds()
@@ -97,9 +107,7 @@ public class GameForm : Form
         }
         else if (e.KeyCode == Keys.Space)
         {
-            Console.WriteLine("balls created");
             ballsManager.CreateBullet(100, 100);
-
         }
         else if (e.KeyCode == Keys.Delete)
         {
@@ -113,8 +121,9 @@ public class GameForm : Form
     {
         levelManager.Draw(e.Graphics);
         player.View.Draw(e.Graphics);
-        darkness.View.Draw(e.Graphics);
         ballsManager.DrawAllBalls(e.Graphics);
+
+        darkness.View.Draw(e.Graphics);
     }
 
     protected override void Dispose(bool disposing)

@@ -10,17 +10,23 @@ namespace echogame.Models
     public class PlayerModel
     {
         // model не знает ни про control, ни про view
+        public readonly int LightRadius = 50;
+
         public Point Position { get; private set; }
+        public Point PreviousPosition { get; private set; }
         public Size PlayerSize { get; private set; }
 
-        public PointF Center => new PointF(Position.X + PlayerSize.Width / 2, Position.Y + PlayerSize.Height / 2);
+        public PointF CenterF => new PointF(Position.X + PlayerSize.Width / 2, Position.Y + PlayerSize.Height / 2);
+        public Point Center => new Point(Position.X + PlayerSize.Width / 2, Position.Y + PlayerSize.Height / 2);
+        public Point PreviousCenter => new Point(PreviousPosition.X + PlayerSize.Width / 2, PreviousPosition.Y + PlayerSize.Height / 2);
+
         private LevelModel levelModel;
 
         public int SpeedX { get; private set; }
         public int SpeedY { get; private set; }
 
+
         public event Action PositionChanged;
-        //public event Action PlayerDied;
 
         public PlayerModel(LevelModel levelModel, Point startPosition, int cellsWidth, int cellsHeight, int speedX, int speedY)
         {
@@ -29,18 +35,15 @@ namespace echogame.Models
             SpeedX = speedX;
             SpeedY = speedY;
             this.levelModel = levelModel;
-
-            // пока тут подписываю
-            //PlayerDied += () =>
-            //{
-            //    PlayerSize = new Size(0, 0);
-            //};
+            PreviousPosition = Position;
+            Move(0, 0);
         }
 
         public void Move(int deltaX, int deltaY)
         {
+            PreviousPosition = Position;
             Position = new Point(Position.X + deltaX, Position.Y + deltaY);
-            PositionChanged.Invoke();
+            PositionChanged?.Invoke();
             Console.WriteLine("invoked");
         }
 
@@ -54,12 +57,11 @@ namespace echogame.Models
                     return false;
             }
             return true;
-            //...
         }
 
         public void Die()
         {
-            //PlayerDied.Invoke();
+
         }
     }
 }

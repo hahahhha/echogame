@@ -7,9 +7,12 @@ namespace echogame.Models
     public class BouncingBallModel
     {
         public PointF Position { get; private set; }
+        public PointF PreviousPosition { get; private set; }
         public SizeF BallSize { get; private set; }
         public float Radius => BallSize.Width / 2;
-        public PointF Center => new PointF(Position.X + Radius, Position.Y + Radius);
+        public PointF CenterF => new PointF(Position.X + Radius, Position.Y + Radius);
+        public Point Center => new Point((int)Position.X + (int)Radius, (int)Position.Y + (int)Radius);
+        public Point PreviousCenter => new Point((int)PreviousPosition.X + (int)Radius, (int)PreviousPosition.Y + (int)Radius);
         public bool IsAlive { get; set; }
         public float SpeedX { get; private set; }
         public float SpeedY { get; private set; }
@@ -32,12 +35,13 @@ namespace echogame.Models
             SpeedY = speedY;
             IsAlive = true;
             levelManager = levelmng;
+            PreviousPosition = position;
         }
 
         public void Update(float deltaTime)
         {
             if (!IsAlive) return;
-
+            PositionChanged?.Invoke();
             var remainingTime = deltaTime;
             var maxSteps = 5;
 
@@ -46,9 +50,9 @@ namespace echogame.Models
                 var stepTime = Math.Min(remainingTime, 0.016f);
                 remainingTime -= stepTime;
 
-                PointF newCenter = new PointF(
-                    Center.X + SpeedX * stepTime,
-                    Center.Y + SpeedY * stepTime
+                var newCenter = new PointF(
+                    CenterF.X + SpeedX * stepTime,
+                    CenterF.Y + SpeedY * stepTime
                 );
 
                 foreach (var wall in levelManager.CurrentLevel.Model.LevelState.WallsGrid)
@@ -70,7 +74,7 @@ namespace echogame.Models
                         break;
                     }
                 }
-
+                PreviousPosition = Position;
                 Position = new PointF(newCenter.X - Radius, newCenter.Y - Radius);
             }
 

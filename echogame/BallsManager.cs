@@ -16,6 +16,8 @@ namespace echogame
         private readonly PlayerModel playerModel;
         private readonly LevelManager levelManager;
 
+        public event Action<BouncingBall> AnyBallPositionChanged;
+
         public BallsManager(PlayerModel playerModel, LevelManager levelManager)
         {
             this.playerModel = playerModel;
@@ -24,6 +26,7 @@ namespace echogame
 
         public void CreateBullet(int speedX, int speedY)
         {
+            if (balls.Count(b => b.Model.IsAlive) >= 2) return;
             var model = new BouncingBallModel(
                 playerModel.Position,
                 new Size(10, 10),
@@ -46,10 +49,17 @@ namespace echogame
 
         public void Update(float deltaTime)
         {
-            foreach (var bullet in balls.ToArray())
+            foreach (var ball in balls)
             {
-                bullet.Controller.Update(deltaTime);
+                ball.Controller.Update(deltaTime);
+                AnyBallPositionChanged?.Invoke(ball);
+                
             }
+        }
+
+        public IEnumerable<BouncingBall> ActiveBalls()
+        {
+            return balls.Where(ball => ball.Model.IsAlive);
         }
 
         public void DrawAllBalls(Graphics g)

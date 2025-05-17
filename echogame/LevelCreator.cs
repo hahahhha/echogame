@@ -13,7 +13,7 @@ namespace echogame
         /// <summary>
         /// Просто создание уровня
         /// </summary>
-        /// <param name="map">Массив строк длинною 12, каждая строка длинною 16 (16*50=800, 12*50=600)</param>
+        /// 
         /// <param name="cellsByMapChars">Словарь, показывающий соответствие символа к ячейке уровня</param>
         /// <param name="isGameLevel">Параметр для меню</param>
         /// <returns></returns>
@@ -38,7 +38,6 @@ namespace echogame
                 currentY += cellHeight;
                 currentX = 0;
             }
-            var n = 0;
             return new LevelMap(cellMap, routsByCells, cellWidth, cellHeight, map.Select(s => s.Length).Max(), map.Length);
         }
 

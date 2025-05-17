@@ -77,9 +77,11 @@
   <ItemGroup>
     <Compile Include="BallsManager.cs" />
     <Compile Include="Controls\BouncingBallController.cs" />
+    <Compile Include="Controls\DarknessBMController.cs" />
     <Compile Include="Controls\DarknessController.cs" />
     <Compile Include="Controls\PlayerController.cs" />
     <Compile Include="Darkness.cs" />
+    <Compile Include="DarknessBM.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,9 +92,13 @@
     <Compile Include="LevelManager.cs" />
     <Compile Include="LevelMap.cs" />
     <Compile Include="BouncingBall.cs" />
+    <Compile Include="Lighter.cs" />
+    <Compile Include="MathExtensions.cs" />
     <Compile Include="Models\BouncingBallModel.cs" />
+    <Compile Include="Models\DarknessBMModel.cs" />
     <Compile Include="Models\DarknessModel.cs" />
     <Compile Include="Models\LevelModel.cs" />
+    <Compile Include="Models\LighterModel.cs" />
     <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PointExtensions.cs" />
@@ -100,8 +106,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoundEngine.cs" />
     <Compile Include="Views\BouncingBallView.cs" />
+    <Compile Include="Views\DarknessBMView.cs" />
     <Compile Include="Views\DarknessView.cs" />
     <Compile Include="Views\LevelView.cs" />
+    <Compile Include="Views\LighterView.cs" />
     <Compile Include="Views\PlayerView.cs" />
     <Compile Include="SolidWall.cs" />
     <Compile Include="WallSide.cs" />
