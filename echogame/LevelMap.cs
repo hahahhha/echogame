@@ -21,14 +21,16 @@ namespace echogame
             new Dictionary<char, LevelCell>()
             {
                 {'#', LevelCell.Wall },
-                {' ', LevelCell.Empty }
+                {' ', LevelCell.Empty },
+                {'L', LevelCell.Light }
             };
 
         public static readonly Dictionary<LevelCell, string> DefaultRoutsByCell =
             new Dictionary<LevelCell, string>()
             {
                 {LevelCell.Empty, "../../Textures/empty_low.png" },
-                {LevelCell.Wall, "../../Textures/wall_low.png" }
+                {LevelCell.Wall, "../../Textures/wall_low.png" },
+                {LevelCell.Light, "../../Textures/empty_low.png" }
             };
 
         private int cellWidth;
@@ -43,6 +45,7 @@ namespace echogame
 
         public readonly List<SolidWall> WallsGrid = new List<SolidWall>();
 
+
         public LevelMap(Dictionary<Point, LevelCell> cellMap, Dictionary<LevelCell, string> routByCell,
             int cellWidth, int cellHeight, int cellWidthAmount, int cellHeightAmount)
         {
@@ -54,6 +57,10 @@ namespace echogame
             this.cellHeightAmount = cellHeightAmount;
             foreach (var point in cellMap.Keys)
             {
+                if (cellMap[point] == LevelCell.Light)
+                {
+                    LightersManager.CreateLighter(point);
+                }
                 ImagesToDrawAtPoints[point] = Image.FromFile(routByCell[cellMap[point]]);
 
                 if (cellMap[point] == LevelCell.Wall)

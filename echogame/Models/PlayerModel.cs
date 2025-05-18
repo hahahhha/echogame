@@ -19,6 +19,7 @@ namespace echogame.Models
         public PointF CenterF => new PointF(Position.X + PlayerSize.Width / 2, Position.Y + PlayerSize.Height / 2);
         public Point Center => new Point(Position.X + PlayerSize.Width / 2, Position.Y + PlayerSize.Height / 2);
         public Point PreviousCenter => new Point(PreviousPosition.X + PlayerSize.Width / 2, PreviousPosition.Y + PlayerSize.Height / 2);
+        public Rectangle Collider => new Rectangle(Position, PlayerSize);
 
         private LevelModel levelModel;
 
@@ -44,7 +45,7 @@ namespace echogame.Models
             PreviousPosition = Position;
             Position = new Point(Position.X + deltaX, Position.Y + deltaY);
             PositionChanged?.Invoke();
-            Console.WriteLine("invoked");
+            //Console.WriteLine("invoked");
         }
 
         public bool IsStepAvialable(Point nextPoint)

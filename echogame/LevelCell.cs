@@ -9,6 +9,7 @@ namespace echogame
     public enum LevelCell
     {
         Empty,
-        Wall
+        Wall,
+        Light
     }
 }

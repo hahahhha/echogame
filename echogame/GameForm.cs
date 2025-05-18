@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System;
 using System.Linq;
-
+// ... добить чтобы фонарь пропадал после столкновения с игроком в lightermodel
 public class GameForm : Form
 {
     private const int WIDTH = 800;
@@ -25,9 +25,7 @@ public class GameForm : Form
     private Player player;
     private DarknessBM darkness;
 
-    // отключаю временно
-    //private Darkness darkness; 
-
+    private ComboBox darknessStateComboBox;
 
     public GameForm()
     {
@@ -35,14 +33,8 @@ public class GameForm : Form
         InitializeSounds();
 
         this.DoubleBuffered = true;
-        //this.ClientSize = new Size(WIDTH, HEIGHT);
         this.BackColor = Color.Black;
-        //this.FormBorderStyle = FormBorderStyle.FixedDialog;
-
-        //this.ControlBox = true; 
-        //this.MaximizeBox = false; 
-        //this.MinimizeBox = true; 
-
+        this.KeyPreview = true; // Это важно - форма будет получать события клавиатуры первой
 
         gameLoopTimer = new Timer { Interval = 1 };
         lastUpdateTime = DateTime.Now;
@@ -55,14 +47,13 @@ public class GameForm : Form
     {
         var zeroLevelModel = new LevelModel("../../Levels/fullLevel.txt", cellWidth, cellHeight);
         var zeroLevelView = new LevelView(zeroLevelModel);
-
         var zeroLevel = new Level(zeroLevelModel, zeroLevelView, 0, new PointF(50, 600));
 
         var firstLevelModel = new LevelModel("../../Levels/manyCollisionsLevel.txt", cellWidth, cellHeight);
         var firstLevelView = new LevelView(firstLevelModel);
         var firstLevel = new Level(firstLevelModel, firstLevelView, 1, new PointF(50, 50));
 
-        levelManager = new LevelManager(new List<Level>() { zeroLevel ,firstLevel });
+        levelManager = new LevelManager(new List<Level>() { zeroLevel, firstLevel });
 
         var playerModel = new PlayerModel(zeroLevelModel, new Point(100, 100), 1, 1, 10, 10);
         var playerView = new PlayerView(playerModel);
@@ -70,14 +61,58 @@ public class GameForm : Form
 
         player = new Player(playerModel, playerView, playerController);
 
-        //var darknessModel = new DarknessModel(player.Model);
-        //var darknessView = new DarknessView(darknessModel, "../../Textures/darkness_mask.png");
-        // darkness = new Darkness(darknessModel, darknessView, new DarknessController());
-
         ballsManager = new BallsManager(playerModel, levelManager);
+
         var darknessModel = new DarknessBMModel(new Size(WIDTH, HEIGHT), playerModel, ballsManager, 50);
         var darknessView = new DarknessBMView(playerModel, darknessModel);
         darkness = new DarknessBM(darknessModel, darknessView, null);
+
+        var text = new TextBox();
+        text.Location = new Point(0, 0);
+        text.Text = "Темнота";
+        text.Font = new Font("Times New Roman", 12);
+        text.ReadOnly = true;
+        text.BorderStyle = BorderStyle.None;
+        text.BackColor = Color.Black;
+        text.ForeColor = Color.White;
+
+        darknessStateComboBox = new ComboBox();
+        darknessStateComboBox.Location = new Point(0, 20);
+        darknessStateComboBox.Size = new Size(100, 100);
+        darknessStateComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+        darknessStateComboBox.Items.Add("Выключена");
+        darknessStateComboBox.Items.Add("Включена");
+        darknessStateComboBox.SelectedIndexChanged += OnDarknessBoxChanged;
+        darknessStateComboBox.SelectedIndex = 1;
+
+        // Важные настройки для корректной работы управления
+        darknessStateComboBox.TabStop = false;
+        darknessStateComboBox.KeyDown += (sender, e) => {
+            // Передаем все события клавиатуры форме
+            OnKeyDown(e);
+        };
+
+        this.Controls.Add(darknessStateComboBox);
+        this.Controls.Add(text);
+    }
+
+    private void OnDarknessBoxChanged(object sender, EventArgs e)
+    {
+        bool newState = Convert.ToBoolean(darknessStateComboBox.SelectedIndex);
+        darkness.Model.IsActive = newState;
+
+        if (newState)
+        {
+            // При включении темноты - полная перерисовка
+            darkness.Model.ForceRedraw();
+        }
+        else
+        {
+            // При выключении - очищаем маску (если нужно)
+            darkness.Model.ClearBitmap();
+        }
+
+        Invalidate(); // Принудительная перерисовка формы
     }
 
     protected void InitializeSounds()
@@ -119,11 +154,15 @@ public class GameForm : Form
 
     protected override void OnPaint(PaintEventArgs e)
     {
+        base.OnPaint(e);
         levelManager.Draw(e.Graphics);
         player.View.Draw(e.Graphics);
         ballsManager.DrawAllBalls(e.Graphics);
-
-        darkness.View.Draw(e.Graphics);
+        LightersManager.DrawAllLighters(e.Graphics);
+        if (darkness.Model.IsActive)
+            darkness.View.Draw(e.Graphics);
+        e.Graphics.DrawEllipse(new Pen(Brushes.Red),
+            new Rectangle(LightersManager.GetActiveLighters().First().Model.Position, new Size(50, 50)));
     }
 
     protected override void Dispose(bool disposing)

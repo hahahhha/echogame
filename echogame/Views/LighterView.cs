@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,18 @@ namespace echogame.Views
     public class LighterView
     {
         private readonly LighterModel model;
+        public readonly Image Texture;
 
-        public LighterView(LighterModel model)
+        public LighterView(LighterModel model, string pathToTexture)
         {
             this.model = model;
+            this.Texture = Image.FromFile(pathToTexture);
         }
 
-        public void Draw()
+        public void Draw(Graphics g)
         {
-
+            if (!model.IsAlive) return;
+            g.DrawImage(Texture, model.Position);
         }
     }
 }

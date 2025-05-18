@@ -93,6 +93,7 @@
     <Compile Include="LevelMap.cs" />
     <Compile Include="BouncingBall.cs" />
     <Compile Include="Lighter.cs" />
+    <Compile Include="LightersManager.cs" />
     <Compile Include="MathExtensions.cs" />
     <Compile Include="Models\BouncingBallModel.cs" />
     <Compile Include="Models\DarknessBMModel.cs" />
@@ -127,6 +128,7 @@
     <Content Include="Sounds\ball_hit.wav" />
     <Content Include="Textures\bg.jpg" />
     <Content Include="Textures\darkness_mask.png" />
+    <Content Include="Textures\flashlight.png" />
     <Content Include="Textures\menu_background.jpeg" />
     <Content Include="Textures\empty.png" />
     <Content Include="Textures\wall.png" />

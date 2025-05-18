@@ -6,6 +6,7 @@ namespace echogame.Models
 {
     public class BouncingBallModel
     {
+        public readonly float LightRadius = 40;
         public PointF Position { get; private set; }
         public PointF PreviousPosition { get; private set; }
         public SizeF BallSize { get; private set; }

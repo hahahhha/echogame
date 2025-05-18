@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace echogame.Views
                     levelBitmap.Dispose();
                 var toDraw = levelModel.LevelState.ImagesToDrawAtPoints;
 
-                levelBitmap = new Bitmap(800, 600);
+                levelBitmap = new Bitmap(800, 600, PixelFormat.Format32bppArgb);
 
                 using (var g = Graphics.FromImage(levelBitmap))
                 {
