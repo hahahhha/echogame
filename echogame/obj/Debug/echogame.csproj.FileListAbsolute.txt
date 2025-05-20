@@ -25,7 +25,6 @@ C:\Users\misha\source\repos\echogame\echogame\bin\Debug\NAudio.WinForms.xml
 C:\Users\misha\source\repos\echogame\echogame\bin\Debug\NAudio.WinMM.xml
 C:\Users\misha\source\repos\echogame\echogame\bin\Debug\System.Security.AccessControl.xml
 C:\Users\misha\source\repos\echogame\echogame\bin\Debug\System.Security.Principal.Windows.xml
-C:\Users\misha\source\repos\echogame\echogame\obj\Debug\echogame.csproj.CopyComplete
 C:\Users\Михаил\Source\Repos\echogame\echogame\bin\Debug\echogame.exe.config
 C:\Users\Михаил\Source\Repos\echogame\echogame\bin\Debug\echogame.exe
 C:\Users\Михаил\Source\Repos\echogame\echogame\bin\Debug\echogame.pdb
@@ -55,3 +54,5 @@ C:\Users\Михаил\Source\Repos\echogame\echogame\obj\Debug\echogame.csproj.C
 C:\Users\Михаил\Source\Repos\echogame\echogame\obj\Debug\echogame.csproj.CopyComplete
 C:\Users\Михаил\Source\Repos\echogame\echogame\obj\Debug\echogame.exe
 C:\Users\Михаил\Source\Repos\echogame\echogame\obj\Debug\echogame.pdb
+C:\Users\misha\source\repos\echogame\echogame\obj\Debug\echogame.exe.config
+C:\Users\misha\source\repos\echogame\echogame\obj\Debug\echogame.csproj.Up2Date

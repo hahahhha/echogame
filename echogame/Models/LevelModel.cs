@@ -19,6 +19,9 @@ namespace echogame.Models
 
         public readonly string Path;
 
+        private readonly LightersManager lightersManager;
+        public Point PlayerStartPos { get; private set; }
+
         //public LevelModel(string[] map, int cellWidth, int cellHeight)
         //{
         //    LevelState = LevelCreator.CreateLevelByMap(
@@ -32,18 +35,22 @@ namespace echogame.Models
         //    CellWidth = cellWidth;
         //}
 
-        public LevelModel(string path, int cellWidth, int cellHeight)
+        public LevelModel(string path, int cellWidth, int cellHeight, Point playerStartPos)
         {
+            lightersManager = new LightersManager();
+
             LevelState = LevelCreator.CreateLevelByMapFromTxt(
                 path,
                 LevelMap.DefaultCellsByChar,
                 LevelMap.DefaultRoutsByCell,
                 cellWidth,
-                cellHeight 
+                cellHeight,
+                lightersManager
                 );
             CellWidth = cellWidth;
             CellHeight = cellHeight;
             Path = path;
+            PlayerStartPos = playerStartPos;
         }
 
         public void ChangeLevel(string[] map)
@@ -53,14 +60,20 @@ namespace echogame.Models
                 LevelMap.DefaultCellsByChar,
                 LevelMap.DefaultRoutsByCell,
                 CellWidth,
-                CellHeight
+                CellHeight,
+                lightersManager
                 );
             LevelChanged.Invoke();
         }
 
-        public void ChangeLevelByTxt(string path)
+        //public void ChangeLevelByTxt(string path)
+        //{
+        //    ChangeLevel(File.ReadLines(path).ToArray());
+        //}
+
+        public LightersManager GetLighterManager()
         {
-            ChangeLevel(File.ReadLines(path).ToArray());
+            return lightersManager;
         }
     }
 }

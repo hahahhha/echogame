@@ -22,11 +22,6 @@ namespace echogame.Controls
             this.playerView = playerView;
         }
 
-        public void OnPositionChanged()
-        {
-
-        }
-
         public void HandleInput(Keys pressedKey)
         {
             var deltaX = 0;

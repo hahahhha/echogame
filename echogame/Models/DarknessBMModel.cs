@@ -18,26 +18,27 @@ namespace echogame.Models
 
         private readonly PlayerModel player;
         private readonly BallsManager ballsManager;
-        private readonly List<Lighter> lighters;
-        private readonly int darkRadius;
         private static readonly Color bgColor = Color.Black;
 
+        private List<Lighter> lighters;
         private BitmapData bmpData;
         private byte[] pixelBuffer;
         private int stride;
         private readonly object bitmapLock = new object();
 
+        private LevelManager levelManager;
+
         public Bitmap Bitmap { get; private set; }
 
-        public DarknessBMModel(Size size, PlayerModel player, BallsManager ballsManager, int darkRadius)
+        public DarknessBMModel(Size size, PlayerModel player, BallsManager ballsManager, LevelManager levelManager)
         {
             Position = new Point(0, 0);
             Size = size;
             this.player = player;
             this.ballsManager = ballsManager;
-            this.darkRadius = darkRadius;
-            this.lighters = LightersManager.GetActiveLighters();
-
+            this.levelManager = levelManager;
+            this.lighters = levelManager.GetCurrentLevelLightersMng().GetActiveLighters();
+            levelManager.LevelChanged += ForceRedraw;
             InitializeBitmap();
 
             this.player.PositionChanged += OnPlayerPositionChanged;
@@ -226,7 +227,7 @@ namespace echogame.Models
         public void ForceRedraw()
         {
             if (!IsActive) return;
-
+            lighters = levelManager.GetCurrentLevelLightersMng().GetActiveLighters();
             LockBitmap();
             try
             {
@@ -254,6 +255,7 @@ namespace echogame.Models
             {
                 UnlockBitmap();
             }
+            Console.WriteLine("forced redraw");
         }
 
         public void Dispose()

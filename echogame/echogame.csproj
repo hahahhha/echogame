@@ -78,9 +78,7 @@
     <Compile Include="BallsManager.cs" />
     <Compile Include="Controls\BouncingBallController.cs" />
     <Compile Include="Controls\DarknessBMController.cs" />
-    <Compile Include="Controls\DarknessController.cs" />
     <Compile Include="Controls\PlayerController.cs" />
-    <Compile Include="Darkness.cs" />
     <Compile Include="DarknessBM.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
@@ -95,11 +93,12 @@
     <Compile Include="Lighter.cs" />
     <Compile Include="LightersManager.cs" />
     <Compile Include="MathExtensions.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Models\BouncingBallModel.cs" />
     <Compile Include="Models\DarknessBMModel.cs" />
-    <Compile Include="Models\DarknessModel.cs" />
     <Compile Include="Models\LevelModel.cs" />
     <Compile Include="Models\LighterModel.cs" />
+    <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PointExtensions.cs" />
@@ -108,9 +107,9 @@
     <Compile Include="SoundEngine.cs" />
     <Compile Include="Views\BouncingBallView.cs" />
     <Compile Include="Views\DarknessBMView.cs" />
-    <Compile Include="Views\DarknessView.cs" />
     <Compile Include="Views\LevelView.cs" />
     <Compile Include="Views\LighterView.cs" />
+    <Compile Include="Views\MenuView.cs" />
     <Compile Include="Views\PlayerView.cs" />
     <Compile Include="SolidWall.cs" />
     <Compile Include="WallSide.cs" />
@@ -120,6 +119,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Levels\1.txt" />
+    <Content Include="Levels\2.txt" />
+    <Content Include="Levels\3.txt" />
     <Content Include="Levels\defaultLevel.txt" />
     <Content Include="Levels\fullLevel.txt" />
     <Content Include="Levels\manyCollisionsLevel.txt" />
@@ -128,9 +130,12 @@
     <Content Include="Sounds\ball_hit.wav" />
     <Content Include="Textures\bg.jpg" />
     <Content Include="Textures\darkness_mask.png" />
+    <Content Include="Textures\darkstartbtn_bg.png" />
+    <Content Include="Textures\echologo.png" />
     <Content Include="Textures\flashlight.png" />
     <Content Include="Textures\menu_background.jpeg" />
     <Content Include="Textures\empty.png" />
+    <Content Include="Textures\startbtn_bg.png" />
     <Content Include="Textures\wall.png" />
     <Content Include="Textures\player.png" />
   </ItemGroup>

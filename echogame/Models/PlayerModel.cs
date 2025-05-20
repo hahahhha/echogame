@@ -21,7 +21,7 @@ namespace echogame.Models
         public Point PreviousCenter => new Point(PreviousPosition.X + PlayerSize.Width / 2, PreviousPosition.Y + PlayerSize.Height / 2);
         public Rectangle Collider => new Rectangle(Position, PlayerSize);
 
-        private LevelModel levelModel;
+        private LevelManager levelManager;
 
         public int SpeedX { get; private set; }
         public int SpeedY { get; private set; }
@@ -29,15 +29,24 @@ namespace echogame.Models
 
         public event Action PositionChanged;
 
-        public PlayerModel(LevelModel levelModel, Point startPosition, int cellsWidth, int cellsHeight, int speedX, int speedY)
+        public PlayerModel(LevelManager levelManager, int cellsWidth, int cellsHeight, int speedX, int speedY)
         {
-            Position = startPosition;
-            PlayerSize = new Size(cellsWidth * levelModel.CellWidth, cellsHeight * levelModel.CellHeight);
+            PlayerSize = new Size(cellsWidth * levelManager.CurrentLevel.Model.CellWidth, 
+                cellsHeight * levelManager.CurrentLevel.Model.CellHeight);
             SpeedX = speedX;
             SpeedY = speedY;
-            this.levelModel = levelModel;
+            this.levelManager = levelManager;
+            SetPosition(levelManager.CurrentLevel.Model.PlayerStartPos);
+            levelManager.LevelNumChanged += () => { SetPosition(levelManager.CurrentLevel.Model.PlayerStartPos); };
             PreviousPosition = Position;
             Move(0, 0);
+        }
+
+        private void SetPosition(Point p)
+        {
+            var deltaX = -Position.X + p.X;
+            var deltaY = -Position.Y + p.Y;
+            Move(deltaX, deltaY);
         }
 
         public void Move(int deltaX, int deltaY)
@@ -45,24 +54,14 @@ namespace echogame.Models
             PreviousPosition = Position;
             Position = new Point(Position.X + deltaX, Position.Y + deltaY);
             PositionChanged?.Invoke();
+            levelManager.OnPlayerPositionChanged(Collider);
             //Console.WriteLine("invoked");
         }
 
         public bool IsStepAvialable(Point nextPoint)
         {
             var nextPointRect = new Rectangle(nextPoint, PlayerSize);
-            foreach (var wallPosition in levelModel.LevelState.WallsPositions)
-            {
-                var wallCell = new Rectangle(wallPosition, new Size(levelModel.CellWidth, levelModel.CellHeight));
-                if (wallCell.IntersectsWith(nextPointRect))
-                    return false;
-            }
-            return true;
-        }
-
-        public void Die()
-        {
-
+            return levelManager.IsPlayerStepAvialable(nextPoint, PlayerSize);
         }
     }
 }

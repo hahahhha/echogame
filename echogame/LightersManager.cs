@@ -8,13 +8,17 @@ using echogame.Models;
 using echogame.Views;
 namespace echogame
 {
-    public static class LightersManager
+    public class LightersManager
     {
-        private static List<Lighter> lighters = new List<Lighter>();
-        private static int lightRadius = 75;
-        private static readonly string pathToTexture = "../../Textures/flashlight.png"; 
+        private List<Lighter> lighters = new List<Lighter>();
+        private int lightRadius = 75;
+        private readonly string pathToTexture = "../../Textures/flashlight.png";
 
-        public static void CreateLighter(Point position)
+        public LightersManager()
+        {
+        }
+
+        public void CreateLighter(Point position)
         {
             // по хорошему сайз бы поменять на размер клетки.....
             var model = new LighterModel(lightRadius, position, new Size(50, 50));
@@ -23,7 +27,7 @@ namespace echogame
             lighters.Add(lighter);
         }
 
-        public static void DrawAllLighters(Graphics g)
+        public void DrawAllLighters(Graphics g)
         {
             foreach (var lighter in lighters.Where(l => l.Model.IsAlive))
             {
@@ -31,24 +35,19 @@ namespace echogame
             }
         }
 
-        public static void OnPlayerPositionChanged()
-        {
-
-        }
-
-        public static void RemoveByPoint(Point pos)
+        public void RemoveByPoint(Point pos)
         {
             var lighterToRemove = lighters.Where(l => l.Model.Position == pos).FirstOrDefault();
             if (lighterToRemove == null) throw new ArgumentException("Не существует фонаря по заданной точке");
             lighters.Remove(lighterToRemove);
         }
 
-        public static void RemoveLighter(Lighter lighter)
+        public void RemoveLighter(Lighter lighter)
         {
             lighters.Remove(lighter);
         }
 
-        public static List<Lighter> GetActiveLighters()
+        public List<Lighter> GetActiveLighters()
         {
             return lighters.Where(l => l.Model.IsAlive).ToList();
         }

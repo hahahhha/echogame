@@ -31,7 +31,7 @@ namespace echogame.Views
                     levelBitmap.Dispose();
                 var toDraw = levelModel.LevelState.ImagesToDrawAtPoints;
 
-                levelBitmap = new Bitmap(800, 600, PixelFormat.Format32bppArgb);
+                levelBitmap = new Bitmap(1950, 1300, PixelFormat.Format32bppArgb);
 
                 using (var g = Graphics.FromImage(levelBitmap))
                 {

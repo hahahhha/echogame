@@ -10,8 +10,8 @@ using System.Linq;
 // ... добить чтобы фонарь пропадал после столкновения с игроком в lightermodel
 public class GameForm : Form
 {
-    private const int WIDTH = 800;
-    private const int HEIGHT = 600;
+    private const int WIDTH = 1920;
+    private const int HEIGHT = 1200;
 
     private BallsManager ballsManager;
     private Timer gameLoopTimer;
@@ -26,7 +26,10 @@ public class GameForm : Form
     private DarknessBM darkness;
 
     private ComboBox darknessStateComboBox;
+    private TextBox darknessText;
+    private TextBox lightersText;
 
+    private echogame.Menu menu;
     public GameForm()
     {
         InitializeGameComponents();
@@ -34,7 +37,8 @@ public class GameForm : Form
 
         this.DoubleBuffered = true;
         this.BackColor = Color.Black;
-        this.KeyPreview = true; // Это важно - форма будет получать события клавиатуры первой
+        this.KeyPreview = true;
+        this.Size = new Size(WIDTH, HEIGHT);
 
         gameLoopTimer = new Timer { Interval = 1 };
         lastUpdateTime = DateTime.Now;
@@ -45,17 +49,17 @@ public class GameForm : Form
 
     protected void InitializeGameComponents()
     {
-        var zeroLevelModel = new LevelModel("../../Levels/fullLevel.txt", cellWidth, cellHeight);
+        var zeroLevelModel = new LevelModel("../../Levels/1.txt", cellWidth, cellHeight, new Point(50, 50));
         var zeroLevelView = new LevelView(zeroLevelModel);
-        var zeroLevel = new Level(zeroLevelModel, zeroLevelView, 0, new PointF(50, 600));
+        var zeroLevel = new Level(zeroLevelModel, zeroLevelView, 0);
 
-        var firstLevelModel = new LevelModel("../../Levels/manyCollisionsLevel.txt", cellWidth, cellHeight);
+        var firstLevelModel = new LevelModel("../../Levels/2.txt", cellWidth, cellHeight, new Point(800, 50));
         var firstLevelView = new LevelView(firstLevelModel);
-        var firstLevel = new Level(firstLevelModel, firstLevelView, 1, new PointF(50, 50));
-
+        var firstLevel = new Level(firstLevelModel, firstLevelView, 1);
         levelManager = new LevelManager(new List<Level>() { zeroLevel, firstLevel });
 
-        var playerModel = new PlayerModel(zeroLevelModel, new Point(100, 100), 1, 1, 10, 10);
+
+        var playerModel = new PlayerModel(levelManager, 1, 1, 5, 5);
         var playerView = new PlayerView(playerModel);
         var playerController = new PlayerController(playerModel, playerView);
 
@@ -63,18 +67,43 @@ public class GameForm : Form
 
         ballsManager = new BallsManager(playerModel, levelManager);
 
-        var darknessModel = new DarknessBMModel(new Size(WIDTH, HEIGHT), playerModel, ballsManager, 50);
+        var darknessModel = new DarknessBMModel(new Size(WIDTH, HEIGHT), playerModel, ballsManager, levelManager);
         var darknessView = new DarknessBMView(playerModel, darknessModel);
         darkness = new DarknessBM(darknessModel, darknessView, null);
 
-        var text = new TextBox();
-        text.Location = new Point(0, 0);
-        text.Text = "Темнота";
-        text.Font = new Font("Times New Roman", 12);
-        text.ReadOnly = true;
-        text.BorderStyle = BorderStyle.None;
-        text.BackColor = Color.Black;
-        text.ForeColor = Color.White;
+        var menuModel = new MenuModel(new Size(WIDTH, HEIGHT), MakeGameControlsVisible);
+        var menuView = new MenuView(menuModel);
+        menu = new echogame.Menu(menuModel, menuView);
+
+        InitializeGameControls();
+
+        menu.Model.InitializeControls(Controls);
+    }
+
+    private void InitializeLightersCounterText()
+    {
+        lightersText = new TextBox();
+        lightersText.Location = new Point(200, 50);
+        lightersText.Text = "Собрано: 0";
+        levelManager.TakenLightersAmountChanged += () =>
+        {
+            lightersText.Text = "Собрано: " + Convert.ToString(levelManager.TakenLightersAmount);
+        };
+        lightersText.Visible = false;
+        this.Controls.Add(lightersText);
+    }
+
+    private void InitializeDarknessComboBox()
+    {
+        darknessText = new TextBox();
+        darknessText.Location = new Point(0, 0);
+        darknessText.Text = "Темнота";
+        darknessText.Font = new Font("Times New Roman", 12);
+        darknessText.ReadOnly = true;
+        darknessText.BorderStyle = BorderStyle.None;
+        darknessText.BackColor = Color.Black;
+        darknessText.ForeColor = Color.White;
+        darknessText.Visible = false;
 
         darknessStateComboBox = new ComboBox();
         darknessStateComboBox.Location = new Point(0, 20);
@@ -85,15 +114,26 @@ public class GameForm : Form
         darknessStateComboBox.SelectedIndexChanged += OnDarknessBoxChanged;
         darknessStateComboBox.SelectedIndex = 1;
 
-        // Важные настройки для корректной работы управления
         darknessStateComboBox.TabStop = false;
         darknessStateComboBox.KeyDown += (sender, e) => {
-            // Передаем все события клавиатуры форме
             OnKeyDown(e);
         };
+        darknessStateComboBox.Visible = false;
 
+        this.Controls.Add(darknessText);
         this.Controls.Add(darknessStateComboBox);
-        this.Controls.Add(text);
+    }
+    private void InitializeGameControls()
+    {
+        InitializeDarknessComboBox();
+        InitializeLightersCounterText();
+    }
+
+    public void MakeGameControlsVisible()
+    {
+        darknessStateComboBox.Visible = true;
+        darknessText.Visible = true;
+        lightersText.Visible = true;
     }
 
     private void OnDarknessBoxChanged(object sender, EventArgs e)
@@ -103,16 +143,14 @@ public class GameForm : Form
 
         if (newState)
         {
-            // При включении темноты - полная перерисовка
             darkness.Model.ForceRedraw();
         }
         else
         {
-            // При выключении - очищаем маску (если нужно)
             darkness.Model.ClearBitmap();
         }
 
-        Invalidate(); // Принудительная перерисовка формы
+        Invalidate(); 
     }
 
     protected void InitializeSounds()
@@ -140,10 +178,10 @@ public class GameForm : Form
         {
             levelManager.ChangeLevelByNum(1);
         }
-        else if (e.KeyCode == Keys.Space)
-        {
-            ballsManager.CreateBullet(100, 100);
-        }
+        //else if (e.KeyCode == Keys.Space)
+        //{
+        //    ballsManager.CreateBullet(100, 100);
+        //}
         else if (e.KeyCode == Keys.Delete)
         {
             Console.WriteLine("balls deleted");
@@ -155,14 +193,19 @@ public class GameForm : Form
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
-        levelManager.Draw(e.Graphics);
-        player.View.Draw(e.Graphics);
-        ballsManager.DrawAllBalls(e.Graphics);
-        LightersManager.DrawAllLighters(e.Graphics);
-        if (darkness.Model.IsActive)
-            darkness.View.Draw(e.Graphics);
-        e.Graphics.DrawEllipse(new Pen(Brushes.Red),
-            new Rectangle(LightersManager.GetActiveLighters().First().Model.Position, new Size(50, 50)));
+        if (menu.Model.IsActive)
+        {
+            menu.View.Draw(e.Graphics);
+        }
+        else
+        {
+            levelManager.Draw(e.Graphics);
+            player.View.Draw(e.Graphics);
+            ballsManager.DrawAllBalls(e.Graphics);
+            if (darkness.Model.IsActive)
+                darkness.View.Draw(e.Graphics);
+            e.Graphics.FillRectangle(new SolidBrush(Color.Red), new Rectangle(new Point(1200, 800), new Size(50, 50)));
+        }    
     }
 
     protected override void Dispose(bool disposing)

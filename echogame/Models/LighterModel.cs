@@ -29,9 +29,9 @@ namespace echogame.Models
             IsAlive = false;
         }
 
-        public void OnPlayerPositionChanged()
+        public void MakeUnactive()
         {
-            // ... добить чтобы фонарь пропадал после столкновения с игроком в lightermodel
+            IsAlive = false;
         }
     }
 }

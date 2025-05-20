@@ -23,6 +23,7 @@ namespace echogame
             Dictionary<LevelCell, string> routsByCells,
             int cellWidth,
             int cellHeight,
+            LightersManager lightersManager,
             bool isGameLevel = true)
         {
             var currentX = 0;
@@ -38,7 +39,13 @@ namespace echogame
                 currentY += cellHeight;
                 currentX = 0;
             }
-            return new LevelMap(cellMap, routsByCells, cellWidth, cellHeight, map.Select(s => s.Length).Max(), map.Length);
+            return new LevelMap(
+                cellMap, 
+                routsByCells,
+                lightersManager,
+                cellWidth, 
+                cellHeight, 
+                map.Select(s => s.Length).Max(), map.Length);
         }
 
         public static LevelMap CreateLevelByMapFromTxt(
@@ -47,6 +54,7 @@ namespace echogame
             Dictionary<LevelCell, string> routsByCells,
             int cellWidth,
             int cellHeight,
+            LightersManager lightersManager,
             bool isGameLevel = true)
         {
             return CreateLevelByMap(
@@ -55,6 +63,7 @@ namespace echogame
                 routsByCells,
                 cellWidth,
                 cellHeight,
+                lightersManager,
                 isGameLevel);
         }
     }

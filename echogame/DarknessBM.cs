@@ -14,9 +14,9 @@ namespace echogame
     {
         public DarknessBMModel Model { get; private set; }
         public DarknessBMView View { get; private set; }
-        public DarknessController Controller { get; private set; }
+        public DarknessBMController Controller { get; private set; }
 
-        public DarknessBM(DarknessBMModel model, DarknessBMView view, DarknessController controller)
+        public DarknessBM(DarknessBMModel model, DarknessBMView view, DarknessBMController controller)
         {
             Model = model;
             View = view;

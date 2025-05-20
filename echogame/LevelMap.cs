@@ -47,6 +47,7 @@ namespace echogame
 
 
         public LevelMap(Dictionary<Point, LevelCell> cellMap, Dictionary<LevelCell, string> routByCell,
+            LightersManager lightersManager,
             int cellWidth, int cellHeight, int cellWidthAmount, int cellHeightAmount)
         {
             ImagesToDrawAtPoints = new Dictionary<Point, Image>();
@@ -59,7 +60,7 @@ namespace echogame
             {
                 if (cellMap[point] == LevelCell.Light)
                 {
-                    LightersManager.CreateLighter(point);
+                    lightersManager.CreateLighter(point);
                 }
                 ImagesToDrawAtPoints[point] = Image.FromFile(routByCell[cellMap[point]]);
 

@@ -1,0 +1,217 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\misha\\source\\repos\\echogame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|c:\\users\\misha\\source\\repos\\echogame\\echogame\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|c:\\users\\misha\\source\\repos\\echogame\\echogame\\levels\\2.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\levels\\2.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|c:\\users\\misha\\source\\repos\\echogame\\echogame\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|C:\\Users\\misha\\source\\repos\\echogame\\echogame\\models\\playermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\models\\playermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|c:\\users\\misha\\source\\repos\\echogame\\echogame\\levels\\1.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\levels\\1.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|c:\\users\\misha\\source\\repos\\echogame\\echogame\\models\\levelmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\models\\levelmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|c:\\users\\misha\\source\\repos\\echogame\\echogame\\models\\menumodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\models\\menumodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|c:\\users\\misha\\source\\repos\\echogame\\echogame\\views\\menuview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\views\\menuview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|c:\\users\\misha\\source\\repos\\echogame\\echogame\\levelmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\levelmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|c:\\users\\misha\\source\\repos\\echogame\\echogame\\levels\\3.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\levels\\3.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|C:\\Users\\misha\\source\\repos\\echogame\\echogame\\views\\levelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4369C455-0DD7-4754-AD28-D8E3C942D5AE}|echogame\\echogame.csproj|solutionrelative:echogame\\views\\levelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameForm.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\GameForm.cs",
+              "RelativeDocumentMoniker": "echogame\\GameForm.cs",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\GameForm.cs",
+              "RelativeToolTip": "echogame\\GameForm.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAswLUAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T08:08:54.294Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "2.txt",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Levels\\2.txt",
+              "RelativeDocumentMoniker": "echogame\\Levels\\2.txt",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Levels\\2.txt",
+              "RelativeToolTip": "echogame\\Levels\\2.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-20T06:10:28.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "1.txt",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Levels\\1.txt",
+              "RelativeDocumentMoniker": "echogame\\Levels\\1.txt",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Levels\\1.txt",
+              "RelativeToolTip": "echogame\\Levels\\1.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-20T05:55:53.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LevelModel.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Models\\LevelModel.cs",
+              "RelativeDocumentMoniker": "echogame\\Models\\LevelModel.cs",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Models\\LevelModel.cs",
+              "RelativeToolTip": "echogame\\Models\\LevelModel.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAgwCUAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T05:40:26.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerModel.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Models\\PlayerModel.cs",
+              "RelativeDocumentMoniker": "echogame\\Models\\PlayerModel.cs",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Models\\PlayerModel.cs",
+              "RelativeToolTip": "echogame\\Models\\PlayerModel.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAApwCoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T17:55:42.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LevelManager.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\LevelManager.cs",
+              "RelativeDocumentMoniker": "echogame\\LevelManager.cs",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\LevelManager.cs",
+              "RelativeToolTip": "echogame\\LevelManager.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwCcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T05:34:01.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LevelMap.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\LevelMap.cs",
+              "RelativeDocumentMoniker": "echogame\\LevelMap.cs",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\LevelMap.cs",
+              "RelativeToolTip": "echogame\\LevelMap.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAIwEgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T04:18:05.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MenuView.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Views\\MenuView.cs",
+              "RelativeDocumentMoniker": "echogame\\Views\\MenuView.cs",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Views\\MenuView.cs",
+              "RelativeToolTip": "echogame\\Views\\MenuView.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwCEAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T03:32:07.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MenuModel.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Models\\MenuModel.cs",
+              "RelativeDocumentMoniker": "echogame\\Models\\MenuModel.cs",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Models\\MenuModel.cs",
+              "RelativeToolTip": "echogame\\Models\\MenuModel.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwEYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T03:31:27.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "3.txt",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Levels\\3.txt",
+              "RelativeDocumentMoniker": "echogame\\Levels\\3.txt",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Levels\\3.txt",
+              "RelativeToolTip": "echogame\\Levels\\3.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-20T03:24:09.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LevelView.cs",
+              "DocumentMoniker": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Views\\LevelView.cs",
+              "RelativeDocumentMoniker": "echogame\\Views\\LevelView.cs",
+              "ToolTip": "C:\\Users\\misha\\source\\repos\\echogame\\echogame\\Views\\LevelView.cs",
+              "RelativeToolTip": "echogame\\Views\\LevelView.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T19:39:20.51Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
